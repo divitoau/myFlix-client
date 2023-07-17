@@ -1,1 +1,1 @@
-This is just the set up and test for building with parcel so far
+You can click the names of these movies and the app will show you some information about them
