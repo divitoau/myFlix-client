@@ -2947,25 +2947,25 @@ var _mainView = require("./components/main-view/main-view");
 // import statement to indicate that you need to bundle './index.scss'
 var _indexScss = require("./index.scss");
 // main component (will eventually use all the others)
-const MyFlixApplication = ()=>{
+const App = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
         lineNumber: 10,
         columnNumber: 10
     }, undefined);
 };
-_c = MyFlixApplication;
+_c = App;
 // finds the root of your app
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 // tells react to render your app in the root dom element
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApplication, {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.jsx",
     lineNumber: 18,
     columnNumber: 13
 }, undefined));
 var _c;
-$RefreshReg$(_c, "MyFlixApplication");
+$RefreshReg$(_c, "App");
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
@@ -27381,7 +27381,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aNAbu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1xTw7","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx"}],"aNAbu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aNAbu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1xTw7","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx"}],"aNAbu":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
