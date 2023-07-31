@@ -5,11 +5,7 @@ import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
   const [user, setUser] = useState(null);
-
-  if (!user) {
-    return <LoginView />;
-  }
-
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -21,7 +17,9 @@ export const MainView = () => {
       });
   }, []);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  if (!user) {
+    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+  }
 
   if (selectedMovie) {
     return (
