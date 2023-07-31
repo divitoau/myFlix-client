@@ -12,16 +12,25 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password,
     };
 
-    fetch("https://openlibrary.org/account/login.json", {
+    fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(data),
-    }).then((response) => {
-      if (response.ok) {
-        onLoggedIn(username);
-      } else {
-        alert("Login failed");
-      }
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Login response: ", data);
+        if (data.user) {
+          onLoggedIn(data.user, data.token);
+        } else {
+          alert("No such user");
+        }
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
   };
 
   return (
@@ -32,7 +41,7 @@ export const LoginView = ({ onLoggedIn }) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          minLength={8}
+          minLength={6}
           required
         />
       </label>
