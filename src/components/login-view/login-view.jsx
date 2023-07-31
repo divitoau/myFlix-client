@@ -12,16 +12,16 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password,
     };
 
-      fetch("https://openlibrary.org/account/login.json", {
-          method: "POST",
-          body: JSON.stringify(data),
-      }).then((response) => {
-          if (response.ok) {
-              onLoggedIn(username);
-          } else {
-              alert("Login failed");
-          }
-      });
+    fetch("https://openlibrary.org/account/login.json", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        onLoggedIn(username);
+      } else {
+        alert("Login failed");
+      }
+    });
   };
 
   return (
