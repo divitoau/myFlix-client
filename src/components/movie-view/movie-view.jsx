@@ -1,31 +1,37 @@
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import { Col } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Stack from "react-bootstrap/Stack";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
-      <div>
+    <Row>
+      <Col md={8} style={{ border: "1px solid gold" }}>
+        <Stack direction="horizontal">
+          <div>
+            <div>
+              <h2>Title: {movie.Title} </h2>
+            </div>
+            <div>
+              <h3>Director: {movie.Director.Name}</h3>
+            </div>
+          </div>
+          <div className="ms-auto">
+            <h4>Genre: {movie.Genre.Name}</h4>
+          </div>
+        </Stack>
+        <div>
+          <p>Description: {movie.Description}</p>
+        </div>
+        <Button variant="primary" onClick={onBackClick} className="back-button">
+          Back
+        </Button>
+      </Col>
+      <Col style={{ border: "1px solid gold" }}>
         <img className="w-100" src={movie.ImagePath} alt="" />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>{" "}
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.Director.Name}</span>
-      </div>
-      <button onClick={onBackClick} className="back-button">
-        Back
-      </button>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
