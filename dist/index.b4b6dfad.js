@@ -2945,19 +2945,17 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _reactBootstrap = require("react-bootstrap");
 var _mainView = require("./components/main-view/main-view");
-// import statement to indicate that you need to bundle './index.scss'
 var _indexScss = require("./index.scss");
-// main component (will eventually use all the others)
 const MyFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 13,
+            lineNumber: 11,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 12,
+        lineNumber: 10,
         columnNumber: 5
     }, undefined);
 };
@@ -2968,7 +2966,7 @@ const root = (0, _client.createRoot)(container);
 // tells react to render your app in the root dom element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 23,
+    lineNumber: 21,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -27457,49 +27455,7 @@ const MainView = ()=>{
         lineNumber: 31,
         columnNumber: 5
     }, undefined);
-}; /* {
-  !user ? (
-    <Col md={4}>
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
-      or
-      <SignupView />
-    </Col>
-  ) : selectedMovie ? (
-    <MovieView
-      movie={selectedMovie}
-      onBackClick={() => setSelectedMovie(null)}
-    />
-  ) : movies.length === 0 ? (
-    <div>The list is empty :(</div>
-  ) : (
-    <>
-      {movies.map((movie) => (
-        <Col className="mb-4" key={movie._id} md={3}>
-          <MovieCard
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />
-        </Col>
-      ))}
-      <Button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </Button>
-    </>
-  );
-} */ 
+};
 _s(MainView, "aXhdDXJEj3Xbw0w7QnAzo5EFhtA=");
 _c = MainView;
 var _c;
@@ -47003,12 +46959,7 @@ const MovieView = ({ movies })=>{
         lineNumber: 13,
         columnNumber: 5
     }, undefined);
-}; /* MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
-}; */ 
+};
 _s(MovieView, "e2L2DPdRH1AShA7yIOCsYRlzvlI=", false, function() {
     return [
         (0, _reactRouter.useParams)

@@ -40,10 +40,3 @@ export const MovieView = ({ movies }) => {
     </Row>
   );
 };
-
-/* MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
-}; */
