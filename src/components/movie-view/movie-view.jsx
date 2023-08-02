@@ -7,7 +7,7 @@ import Stack from "react-bootstrap/Stack";
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <Row>
-      <Col md={8} style={{ border: "1px solid gold" }}>
+      <Col md={8}>
         <Stack direction="horizontal">
           <div>
             <div>
@@ -28,7 +28,7 @@ export const MovieView = ({ movie, onBackClick }) => {
           Back
         </Button>
       </Col>
-      <Col style={{ border: "1px solid gold" }}>
+      <Col md={4}>
         <img className="w-100" src={movie.ImagePath} alt="" />
       </Col>
     </Row>
