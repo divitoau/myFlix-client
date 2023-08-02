@@ -27330,7 +27330,6 @@ const MainView = ()=>{
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
@@ -27354,7 +27353,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 32,
+                lineNumber: 31,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27373,7 +27372,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 42,
+                            lineNumber: 41,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27393,7 +27392,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 56,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27412,7 +27411,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 75,
+                            lineNumber: 74,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27435,28 +27434,28 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 91,
+                            lineNumber: 90,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 41,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 40,
+                lineNumber: 39,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "aXhdDXJEj3Xbw0w7QnAzo5EFhtA=");
+_s(MainView, "vrQobkEX5jhNcI69dtstaSSmWyg=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
