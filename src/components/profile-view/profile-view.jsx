@@ -7,7 +7,7 @@ import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-export const ProfileView = ({ user }) => {
+export const ProfileView = ({ user, onUserUpdate }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -33,14 +33,16 @@ export const ProfileView = ({ user }) => {
           "Content-Type": "application/json",
         },
       }
-    ).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-        window.location.reload();
-      } else {
-        alert("Signup failed");
-      }
-    });
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Update response: ", data);
+        localStorage.setItem("user", JSON.stringify(data));
+        onUserUpdate(data);
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
   };
   return (
     <div>

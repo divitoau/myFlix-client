@@ -96,7 +96,12 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <ProfileView user={user} />
+                    <ProfileView
+                      user={user}
+                      onUserUpdate={(user) => {
+                        setUser(user);
+                      }}
+                    />
                   </Col>
                 )}
               </>
