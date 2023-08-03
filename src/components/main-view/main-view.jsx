@@ -3,7 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import {NavigationBar} from "../navigation-bar/navigation-bar.jsx"
+import { ProfileView } from "../profile-view/profile-view.jsx";
+import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
@@ -29,7 +30,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar
-        user = {user}
+        user={user}
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
@@ -82,6 +83,20 @@ export const MainView = () => {
                 ) : (
                   <Col>
                     <MovieView movies={movies} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col>
+                    <ProfileView user={user} />
                   </Col>
                 )}
               </>
