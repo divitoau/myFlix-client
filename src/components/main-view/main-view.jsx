@@ -6,7 +6,6 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -82,7 +81,13 @@ export const MainView = () => {
                   <Col>The list is empty :(</Col>
                 ) : (
                   <Col>
-                    <MovieView movies={movies} />
+                    <MovieView
+                      movies={movies}
+                      user={user}
+                      onAddFavorite={(user) => {
+                        setUser(user);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -97,6 +102,7 @@ export const MainView = () => {
                 ) : (
                   <Col>
                     <ProfileView
+                      movies={movies}
                       user={user}
                       onUserUpdate={(user) => {
                         setUser(user);

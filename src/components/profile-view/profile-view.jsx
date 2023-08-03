@@ -6,14 +6,19 @@ import Row from "react-bootstrap/Row";
 import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, onUserUpdate }) => {
+export const ProfileView = ({ user, onUserUpdate, movies }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
   const token = localStorage.getItem("token");
+
+  let favoriteMoviesList = movies.filter((m) =>
+    user.FavoriteMovies.includes(m._id)
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,52 +51,67 @@ export const ProfileView = ({ user, onUserUpdate }) => {
   };
   return (
     <div>
-      <h1>Hello {user.Username}!</h1>
-      <p>Email: {user.Email}</p>
-      <p>Birthday: {user.Birthday}</p>
-      <h2>Update your info!</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            minLength="5"
-          />
-        </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Control
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      <Row>
+        <Col>
+          <h1>Hello {user.Username}!</h1>
+          <p>Email: {user.Email}</p>
+          <p>Birthday: {user.Birthday}</p>{" "}
+        </Col>{" "}
+        <Col>
+          <h2>Update your info!</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minLength="5"
+              />
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formBirthday">
+              <Form.Label>Birthday:</Form.Label>
+              <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+      <Row>
+        <>
+          {favoriteMoviesList.map((movie) => (
+            <Col className="mb-4" key={movie._id} md={3}>
+              <MovieCard movie={movie} />
+            </Col>
+          ))}
+        </>
+      </Row>
     </div>
   );
 };
