@@ -6,10 +6,18 @@ import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-export const MovieView = ({ movies, user, onAddFavorite }) => {
+export const MovieView = ({
+  movies,
+  user,
+  onAddFavorite,
+  onRemoveFavorite,
+}) => {
   const { movieId } = useParams();
   const movie = movies.find((m) => m._id === movieId);
   const token = localStorage.getItem("token");
+  let favoriteMoviesList = movies.filter((m) =>
+    user.FavoriteMovies.includes(m._id)
+  );
 
   const addFavorite = () => {
     fetch(
@@ -25,7 +33,28 @@ export const MovieView = ({ movies, user, onAddFavorite }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Favorite movie list: ", data.FavoriteMovies);
-        onAddFavorite(data)
+        onAddFavorite(data);
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
+  };
+
+  const removeFavorite = () => {
+    fetch(
+      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Favorite movie list: ", data.FavoriteMovies);
+        onRemoveFavorite(data);
       })
       .catch((e) => {
         alert("Something went wrong");
@@ -57,9 +86,19 @@ export const MovieView = ({ movies, user, onAddFavorite }) => {
               Back
             </Button>
           </Link>
-          <Button variant="primary" className="ms-auto" onClick={addFavorite}>
-            Add to Favorites
-          </Button>
+          {favoriteMoviesList.indexOf(movie) > -1 ? (
+            <Button
+              variant="primary"
+              className="ms-auto"
+              onClick={removeFavorite}
+            >
+              Remove from Favorites
+            </Button>
+          ) : (
+            <Button variant="primary" className="ms-auto" onClick={addFavorite}>
+              Add to Favorites
+            </Button>
+          )}
         </Stack>
       </Col>
       <Col md={4}>

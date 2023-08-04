@@ -87,6 +87,9 @@ export const MainView = () => {
                       onAddFavorite={(user) => {
                         setUser(user);
                       }}
+                      onRemoveFavorite={(user) => {
+                        setUser(user);
+                      }}
                     />
                   </Col>
                 )}
