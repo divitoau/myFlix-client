@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, onUserUpdate, movies }) => {
+export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +20,27 @@ export const ProfileView = ({ user, onUserUpdate, movies }) => {
     user.FavoriteMovies.includes(m._id)
   );
 
-  const handleSubmit = (event) => {
+  const deregisterUser = () => {
+    fetch(
+      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        console.log("Response: ", response);
+        onDeregister();
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
+  };
+
+  const updateInfo = (event) => {
     event.preventDefault();
     const data = {
       Username: username,
@@ -56,10 +76,11 @@ export const ProfileView = ({ user, onUserUpdate, movies }) => {
           <h1>Hello {user.Username}!</h1>
           <p>Email: {user.Email}</p>
           <p>Birthday: {user.Birthday}</p>{" "}
+          <Button onClick={deregisterUser}> Remove account permanently </Button>
         </Col>{" "}
         <Col>
           <h2>Update your info!</h2>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={updateInfo}>
             <Form.Group controlId="formUsername">
               <Form.Label>Username:</Form.Label>
               <Form.Control

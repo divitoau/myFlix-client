@@ -110,6 +110,11 @@ export const MainView = () => {
                       onUserUpdate={(user) => {
                         setUser(user);
                       }}
+                      onDeregister={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }}
                     />
                   </Col>
                 )}
