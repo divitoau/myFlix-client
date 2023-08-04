@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import Row from "react-bootstrap/Row";

@@ -3,9 +3,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
-import Stack from "react-bootstrap/Stack";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
