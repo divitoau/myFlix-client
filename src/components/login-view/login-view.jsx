@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
+
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -39,31 +41,35 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <div>
-      <h1>Login!</h1>
+      <p>Welcome to</p>
+      <h1 className="mb-4">myFlix</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
+        <Form.Group className="mb-4" controlId="formUsername">
           <Form.Control
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
             minLength="5"
           />
         </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
+        <Form.Group className="mb-4" controlId="formPassword">
           <Form.Control
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+        <Button className="mb-4" variant="primary" type="submit">
+          Login
         </Button>
       </Form>
+      <Link to={`/signup`}>
+        <p>Don't have an account?</p>
+      </Link>
     </div>
   );
 };

@@ -28,14 +28,16 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      />
+      <div className="mb-4" style={{ margin: "auto -12px auto" }}>
+        <NavigationBar
+          user={user}
+          onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        />
+      </div>
       <Row className="justify-content-md-center">
         <Routes>
           <Route
