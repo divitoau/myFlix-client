@@ -66,7 +66,7 @@ export const MovieView = ({
         <Stack direction="horizontal">
           <div>
             <div>
-              <h2>Title: {movie.Title} </h2>
+              <h2>{movie.Title} </h2>
             </div>
             <div>
               <h3>Director: {movie.Director.Name}</h3>
@@ -76,8 +76,8 @@ export const MovieView = ({
             <h4>Genre: {movie.Genre.Name}</h4>
           </div>
         </Stack>
-        <div>
-          <p>Description: {movie.Description}</p>
+        <div className="mb-3">
+          <p>{movie.Description}</p>
         </div>
         <Stack direction="horizontal">
           <Link to={`/`}>

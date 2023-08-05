@@ -46910,7 +46910,6 @@ const MovieView = ({ movies, user, onAddFavorite, onRemoveFavorite })=>{
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                             children: [
-                                                "Title: ",
                                                 movie.Title,
                                                 " "
                                             ]
@@ -46970,12 +46969,10 @@ const MovieView = ({ movies, user, onAddFavorite, onRemoveFavorite })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mb-3",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                            children: [
-                                "Description: ",
-                                movie.Description
-                            ]
-                        }, void 0, true, {
+                            children: movie.Description
+                        }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 80,
                             columnNumber: 11
@@ -47759,6 +47756,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
         expand: "lg",
         className: "bg-body-tertiary",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+            fluid: true,
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
                     as: (0, _reactRouterDom.Link),
