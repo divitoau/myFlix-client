@@ -68,46 +68,56 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
   };
   return (
     <div>
+      <h1 className="mb-4">Hello {user.Username}!</h1>
       <Row>
         <Col>
-          <h1>Hello {user.Username}!</h1>
+          <h2>Account Information</h2>
           <p>Email: {user.Email}</p>
-          <p>Birthday: {user.Birthday}</p>{" "}
-          <Button onClick={deregisterUser}> Remove account permanently </Button>
+          <p>
+            Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
+            {user.Birthday.slice(0, 4)}
+          </p>{" "}
+          <p
+            style={{ color: "red", cursor: "pointer" }}
+            onClick={deregisterUser}
+          >
+            {" "}
+            Remove account permanently{" "}
+          </p>
         </Col>{" "}
         <Col>
-          <h2>Update your info!</h2>
+          <h2>Update Information</h2>
           <Form onSubmit={updateInfo}>
-            <Form.Group controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
+            <Form.Group className="mb-4" controlId="formUsername">
               <Form.Control
                 type="text"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 minLength="5"
               />
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
+            </Form.Group>{" "}
+            <Form.Group className="mb-4" controlId="formEmail">
               <Form.Control
                 type="email"
+                placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </Form.Group>
-            <Form.Group controlId="formBirthday">
-              <Form.Label>Birthday:</Form.Label>
+            <Form.Group className="mb-2" controlId="formPassword">
+              <Form.Control
+                type="password"
+                placeholder="Pasword"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-4" controlId="formBirthday">
+              <Form.Label style={{ color: "gray" }}>Birthday:</Form.Label>
               <Form.Control
                 type="date"
                 value={birthday}
@@ -115,12 +125,13 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
+            <Button className="mb-4" variant="primary" type="submit">
+              Update
             </Button>
           </Form>
         </Col>
       </Row>
+      <h2>Favorites</h2>
       <Row>
         <>
           {favoriteMoviesList.map((movie) => (

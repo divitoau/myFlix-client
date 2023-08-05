@@ -77,7 +77,7 @@ export const SignupView = () => {
           />
         </Form.Group>
         <Button className="mb-4" variant="primary" type="submit">
-          Submit
+          Signup
         </Button>
       </Form>
       <Link to={`/login`}>
