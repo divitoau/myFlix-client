@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
+
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -34,38 +36,39 @@ export const SignupView = () => {
 
   return (
     <div>
-      <h1>Register now!</h1>
+      <p>Welcome to</p>
+      <h1 className="mb-4">myFlix</h1>{" "}
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
+        <Form.Group className="mb-4" controlId="formUsername">
           <Form.Control
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
             minLength="5"
           />
-        </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
+        </Form.Group>{" "}
+        <Form.Group className="mb-4" controlId="formEmail">
           <Form.Control
             type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday:</Form.Label>
+        <Form.Group className="mb-2" controlId="formPassword">
+          <Form.Control
+            type="password"
+            placeholder="Pasword"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-4" controlId="formBirthday">
+          <Form.Label style={{color: "gray"}}>Birthday:</Form.Label>
           <Form.Control
             type="date"
             value={birthday}
@@ -73,10 +76,13 @@ export const SignupView = () => {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="mb-4" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
+      <Link to={`/login`}>
+        <p>Already have an account?</p>
+      </Link>
     </div>
   );
 };
