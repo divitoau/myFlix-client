@@ -149,7 +149,7 @@ export const MainView = () => {
                     <Row className="justify-content-md-center">
                       {" "}
                       <Col md={4}>
-                        <Form onSubmit={searchMovies}>
+                        <Form>
                           <Form.Group className="mb-4" controlId="searchBar">
                             <Form.Control
                               type="text"
