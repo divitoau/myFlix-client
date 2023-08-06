@@ -8,6 +8,8 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import Row from "react-bootstrap/Row";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -15,6 +17,8 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
@@ -25,6 +29,15 @@ export const MainView = () => {
         setMovies(movies);
       });
   }, [token]);
+
+  const searchMovies = (event) => {
+    event.preventDefault();
+    setSearchedMovies(
+      movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  };
 
   return (
     <BrowserRouter>
@@ -132,13 +145,45 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty :(</Col>
                 ) : (
-                  <>
-                    {movies.map((movie) => (
-                      <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
+                  <div>
+                    <Row className="justify-content-md-center">
+                      {" "}
+                      <Col md={4}>
+                        <Form onSubmit={searchMovies}>
+                          <Form.Group className="mb-4" controlId="searchBar">
+                            <Form.Control
+                              type="text"
+                              placeholder="Search"
+                              value={search}
+                              onChange={(e) => setSearch(e.target.value)}
+                              onInput={searchMovies}
+                            />
+                          </Form.Group>{" "}
+                        </Form>
                       </Col>
-                    ))}
-                  </>
+                    </Row>
+                    {search ? (
+                      <Row>
+                        <>
+                          {searchedMovies.map((movie) => (
+                            <Col className="mb-4" key={movie._id} md={3}>
+                              <MovieCard movie={movie} />
+                            </Col>
+                          ))}
+                        </>
+                      </Row>
+                    ) : (
+                      <Row>
+                        <>
+                          {movies.map((movie) => (
+                            <Col className="mb-4" key={movie._id} md={3}>
+                              <MovieCard movie={movie} />
+                            </Col>
+                          ))}
+                        </>
+                      </Row>
+                    )}
+                  </div>
                 )}
               </>
             }
