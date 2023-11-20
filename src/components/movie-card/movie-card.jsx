@@ -9,41 +9,52 @@ export const MovieCard = ({ movie }) => {
   return (
     <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
       {isShown ? (
-        <div
+        <Card
+          className="h-100"
           style={{
-            transform: "scale(1.4)",
+            cursor: "pointer",
+            transition: "transform .2s",
+            transform: "scale(1.1)",
+            zIndex: "3",
+            backgroundColor: "#161616",
           }}
+          onMouseLeave={() => setIsShown(false)}
         >
-          <Card
-            className="h-100"
+          <Card.Img
+            variant="top"
+            src={movie.ImagePath}
+            style={{ aspectRatio: "7/10" }}
+          />
+          <Card.Body
             style={{
-              cursor: "pointer",
-              zIndex: "50",
+              position: "absolute",
+              top: "100%",
+              backgroundColor: "#161616",
+              width: "100%",
             }}
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
           >
-            <Card.Img variant="top" src={movie.ImagePath} />
-            {isShown && (
-              <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text style={{ color: "darkgrey" }}>
-                  Genre: {movie.Genre.Name}
-                </Card.Text>
-              </Card.Body>
-            )}
-          </Card>
-        </div>
+            <Card.Title style={{ color: "#eee" }}>{movie.Title}</Card.Title>
+            <Card.Text style={{ color: "#eee" }}>
+              Genre: {movie.Genre.Name}
+            </Card.Text>
+          </Card.Body>
+        </Card>
       ) : (
         <Card
           className="h-100"
           style={{
             cursor: "pointer",
+            zIndex: "2",
+            border: "none",
+            backgroundColor: "#161616",
           }}
           onMouseEnter={() => setIsShown(true)}
-          onMouseLeave={() => setIsShown(false)}
         >
-          <Card.Img variant="top" src={movie.ImagePath} />
+          <Card.Img
+            variant="top"
+            src={movie.ImagePath}
+            style={{ aspectRatio: "7/10" }}
+          />
         </Card>
       )}
     </Link>

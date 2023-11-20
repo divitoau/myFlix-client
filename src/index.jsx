@@ -7,7 +7,9 @@ import "./index.scss";
 
 const MyFlixApplication = () => {
   return (
-    <Container fluid>
+    <Container fluid className="px-3" style={{
+      backgroundColor: "#161616",
+    paddingBottom : "140px"}}>
       <MainView />
     </Container>
   );

@@ -2949,9 +2949,14 @@ var _indexScss = require("./index.scss");
 const MyFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         fluid: true,
+        className: "px-3",
+        style: {
+            backgroundColor: "#161616",
+            paddingBottom: "140px"
+        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 11,
+            lineNumber: 13,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
@@ -2967,7 +2972,7 @@ const root = (0, _client.createRoot)(container);
 // tells react to render your app in the root dom element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 21,
+    lineNumber: 23,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -40748,6 +40753,7 @@ const MainView = ()=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                                     md: 4,
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
+                                                        className: "mb-5",
                                                         children: [
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
                                                                 className: "mb-4",
@@ -40769,7 +40775,7 @@ const MainView = ()=>{
                                         search ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                                 children: searchedMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                                        className: "mb-4",
+                                                        className: "mb-4 px-4",
                                                         md: 3,
                                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                             movie: movie
@@ -40779,7 +40785,7 @@ const MainView = ()=>{
                                         }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                                 children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                                        className: "mb-4",
+                                                        className: "mb-4 px-4",
                                                         md: 3,
                                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                             movie: movie
@@ -40846,83 +40852,93 @@ const MovieCard = ({ movie })=>{
     const [isShown, setIsShown] = (0, _react.useState)(false);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
         to: `/movies/${encodeURIComponent(movie._id)}`,
-        children: isShown ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: isShown ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+            className: "h-100",
             style: {
-                transform: "scale(1.4)"
+                cursor: "pointer",
+                transition: "transform .2s",
+                transform: "scale(1.1)",
+                zIndex: "3",
+                backgroundColor: "#161616"
             },
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                className: "h-100",
-                style: {
-                    cursor: "pointer",
-                    zIndex: "50"
-                },
-                onMouseEnter: ()=>setIsShown(true),
-                onMouseLeave: ()=>setIsShown(false),
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                        variant: "top",
-                        src: movie.ImagePath
-                    }, void 0, false, {
-                        fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 26,
-                        columnNumber: 13
-                    }, undefined),
-                    isShown && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                                children: movie.Title
-                            }, void 0, false, {
-                                fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 29,
-                                columnNumber: 17
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
-                                style: {
-                                    color: "darkgrey"
-                                },
-                                children: [
-                                    "Genre: ",
-                                    movie.Genre.Name
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 30,
-                                columnNumber: 17
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 28,
-                        columnNumber: 15
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 17,
-                columnNumber: 11
-            }, undefined)
-        }, void 0, false, {
+            onMouseLeave: ()=>setIsShown(false),
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                    variant: "top",
+                    src: movie.ImagePath,
+                    style: {
+                        aspectRatio: "7/10"
+                    }
+                }, void 0, false, {
+                    fileName: "src/components/movie-card/movie-card.jsx",
+                    lineNumber: 23,
+                    columnNumber: 11
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                    style: {
+                        position: "absolute",
+                        top: "100%",
+                        backgroundColor: "#161616",
+                        width: "100%"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                            style: {
+                                color: "#eee"
+                            },
+                            children: movie.Title
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 36,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
+                            style: {
+                                color: "#eee"
+                            },
+                            children: [
+                                "Genre: ",
+                                movie.Genre.Name
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 37,
+                            columnNumber: 13
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/movie-card/movie-card.jsx",
+                    lineNumber: 28,
+                    columnNumber: 11
+                }, undefined)
+            ]
+        }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
             lineNumber: 12,
             columnNumber: 9
         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
             className: "h-100",
             style: {
-                cursor: "pointer"
+                cursor: "pointer",
+                zIndex: "2",
+                border: "none",
+                backgroundColor: "#161616"
             },
             onMouseEnter: ()=>setIsShown(true),
-            onMouseLeave: ()=>setIsShown(false),
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                 variant: "top",
-                src: movie.ImagePath
+                src: movie.ImagePath,
+                style: {
+                    aspectRatio: "7/10"
+                }
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 46,
+                lineNumber: 53,
                 columnNumber: 11
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 38,
+            lineNumber: 43,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {

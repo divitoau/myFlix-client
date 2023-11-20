@@ -150,7 +150,7 @@ export const MainView = () => {
                     <Row className="justify-content-md-center">
                       {" "}
                       <Col md={4}>
-                        <Form>
+                        <Form className="mb-5">
                           <Form.Group className="mb-4" controlId="searchBar">
                             <Form.Control
                               type="text"
@@ -167,7 +167,7 @@ export const MainView = () => {
                       <Row>
                         <>
                           {searchedMovies.map((movie) => (
-                            <Col className="mb-4" key={movie._id} md={3}>
+                            <Col className="mb-4 px-4" key={movie._id} md={3}>
                               <MovieCard movie={movie} />
                             </Col>
                           ))}
@@ -177,7 +177,7 @@ export const MainView = () => {
                       <Row>
                         <>
                           {movies.map((movie) => (
-                            <Col className="mb-4" key={movie._id} md={3}>
+                            <Col className="mb-4 px-4" key={movie._id} md={3}>
                               <MovieCard movie={movie} />
                             </Col>
                           ))}
