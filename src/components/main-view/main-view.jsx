@@ -22,7 +22,7 @@ export const MainView = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/movies", {
+    fetch("http://54.242.62.28:8080/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())

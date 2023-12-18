@@ -8,4 +8,4 @@ React, Parcel, React-Bootstrap
 
 ## API used
 
-http://localhost:8080
+http://54.242.62.28:8080

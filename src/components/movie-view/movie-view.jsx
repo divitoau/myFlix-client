@@ -19,7 +19,7 @@ export const MovieView = ({
     user.FavoriteMovies.includes(m._id)
   );
 
-  const apiFavesUrl = `http://localhost:8080/users/${user.Username}/movies/${movie._id}`;
+  const apiFavesUrl = `http://54.242.62.28:8080/users/${user.Username}/movies/${movie._id}`;
 
   const addFavorite = () => {
     fetch(apiFavesUrl, {

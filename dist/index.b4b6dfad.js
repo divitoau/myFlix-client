@@ -40607,7 +40607,7 @@ const MainView = ()=>{
     const [searchedMovies, setSearchedMovies] = (0, _react.useState)([]);
     const [search, setSearch] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
-        fetch("http://localhost:8080/movies", {
+        fetch("http://54.242.62.28:8080/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -46960,7 +46960,7 @@ const MovieView = ({ movies, user, onAddFavorite, onRemoveFavorite })=>{
     const movie = movies.find((m)=>m._id === movieID);
     const token = localStorage.getItem("token");
     let favoriteMoviesList = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
-    const apiFavesUrl = `http://localhost:8080/users/${user.Username}/movies/${movie._id}`;
+    const apiFavesUrl = `http://54.242.62.28:8080/users/${user.Username}/movies/${movie._id}`;
     const addFavorite = ()=>{
         fetch(apiFavesUrl, {
             method: "POST",
@@ -47195,7 +47195,7 @@ const Gallery = ({ movieID })=>{
     const [modalIsOpen, setModalisOpen] = (0, _react.useState)(false);
     const [bigPicSrc, setBigPicSrc] = (0, _react.useState)("");
     const fileInputRef = (0, _react.useRef)(null);
-    const apiImagesUrl = "http://localhost:8080/images";
+    const apiImagesUrl = "http://54.242.62.28:8080/images";
     const bucketUrl = "https://silly-lil-bucket-guy.s3.amazonaws.com";
     (0, _react.useEffect)(()=>{
         try {
@@ -48702,7 +48702,7 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        fetch("http://localhost:8080/login", {
+        fetch("http://54.242.62.28:8080/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -48857,7 +48857,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("http://localhost:8080/users", {
+        fetch("http://54.242.62.28:8080/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -49056,7 +49056,7 @@ const ProfileView = ({ user, onUserUpdate, movies, onDeregister })=>{
     const [birthday, setBirthday] = (0, _react.useState)("");
     const token = localStorage.getItem("token");
     let favoriteMoviesList = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
-    const apiUsersUrl = `http://localhost:8080/users/${user.Username}`;
+    const apiUsersUrl = `http://54.242.62.28:8080/users/${user.Username}`;
     const deregisterUser = ()=>{
         fetch(apiUsersUrl, {
             method: "DELETE",

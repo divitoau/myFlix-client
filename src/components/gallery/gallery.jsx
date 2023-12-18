@@ -11,7 +11,7 @@ export const Gallery = ({ movieID }) => {
 
   const fileInputRef = useRef(null);
 
-  const apiImagesUrl = "http://localhost:8080/images";
+  const apiImagesUrl = "http://54.242.62.28:8080/images";
   const bucketUrl = "https://silly-lil-bucket-guy.s3.amazonaws.com";
 
   useEffect(() => {
