@@ -4,10 +4,13 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
-
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const apiLoginUrl =
+    "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/login";
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -16,7 +19,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password,
     };
 
-    fetch("http://54.242.62.28:8080/login", {
+    fetch(apiLoginUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

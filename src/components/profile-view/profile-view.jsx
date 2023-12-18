@@ -17,7 +17,7 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
     user.FavoriteMovies.includes(m._id)
   );
 
-  const apiUsersUrl = `http://54.242.62.28:8080/users/${user.Username}`;
+  const apiUsersUrl = `http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users/${user.Username}`;
 
   const deregisterUser = () => {
     fetch(apiUsersUrl, {

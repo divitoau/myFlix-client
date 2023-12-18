@@ -40606,8 +40606,9 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [searchedMovies, setSearchedMovies] = (0, _react.useState)([]);
     const [search, setSearch] = (0, _react.useState)("");
+    const apiMoviesUrl = "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/movies";
     (0, _react.useEffect)(()=>{
-        fetch("http://54.242.62.28:8080/movies", {
+        fetch(apiMoviesUrl, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40637,12 +40638,12 @@ const MainView = ()=>{
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 46,
+                    lineNumber: 49,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 45,
+                lineNumber: 48,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -40661,7 +40662,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 57,
+                            lineNumber: 60,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -40681,7 +40682,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 71,
+                            lineNumber: 74,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -40707,7 +40708,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 90,
+                            lineNumber: 93,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -40733,7 +40734,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 115,
+                            lineNumber: 118,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -40798,24 +40799,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 140,
+                            lineNumber: 143,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 56,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 58,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 47,
         columnNumber: 5
     }, undefined);
 };
@@ -46960,7 +46961,7 @@ const MovieView = ({ movies, user, onAddFavorite, onRemoveFavorite })=>{
     const movie = movies.find((m)=>m._id === movieID);
     const token = localStorage.getItem("token");
     let favoriteMoviesList = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
-    const apiFavesUrl = `http://54.242.62.28:8080/users/${user.Username}/movies/${movie._id}`;
+    const apiFavesUrl = `http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users/${user.Username}/movies/${movie._id}`;
     const addFavorite = ()=>{
         fetch(apiFavesUrl, {
             method: "POST",
@@ -47195,7 +47196,7 @@ const Gallery = ({ movieID })=>{
     const [modalIsOpen, setModalisOpen] = (0, _react.useState)(false);
     const [bigPicSrc, setBigPicSrc] = (0, _react.useState)("");
     const fileInputRef = (0, _react.useRef)(null);
-    const apiImagesUrl = "http://54.242.62.28:8080/images";
+    const apiImagesUrl = "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/images";
     const bucketUrl = "https://silly-lil-bucket-guy.s3.amazonaws.com";
     (0, _react.useEffect)(()=>{
         try {
@@ -47239,7 +47240,7 @@ const Gallery = ({ movieID })=>{
                 children: "Gallery"
             }, void 0, false, {
                 fileName: "src/components/gallery/gallery.jsx",
-                lineNumber: 66,
+                lineNumber: 67,
                 columnNumber: 7
             }, undefined),
             " ",
@@ -47253,28 +47254,28 @@ const Gallery = ({ movieID })=>{
                                 src: getPicUrl(pic.Key)
                             }, void 0, false, {
                                 fileName: "src/components/gallery/gallery.jsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 17
                             }, undefined)
                         }, pic.ETag, false, {
                             fileName: "src/components/gallery/gallery.jsx",
-                            lineNumber: 71,
+                            lineNumber: 72,
                             columnNumber: 15
                         }, undefined))
                 }, void 0, false, {
                     fileName: "src/components/gallery/gallery.jsx",
-                    lineNumber: 69,
+                    lineNumber: 70,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/gallery/gallery.jsx",
-                lineNumber: 68,
+                lineNumber: 69,
                 columnNumber: 9
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "No photos uploaded for this movie yet. Hurry up and be the first!"
             }, void 0, false, {
                 fileName: "src/components/gallery/gallery.jsx",
-                lineNumber: 82,
+                lineNumber: 83,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -47287,7 +47288,7 @@ const Gallery = ({ movieID })=>{
                         children: "Upload a new babe:"
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
-                        lineNumber: 89,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -47298,7 +47299,7 @@ const Gallery = ({ movieID })=>{
                         ref: fileInputRef
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
-                        lineNumber: 90,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -47306,13 +47307,13 @@ const Gallery = ({ movieID })=>{
                         children: "Upload"
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
-                        lineNumber: 97,
+                        lineNumber: 98,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/gallery/gallery.jsx",
-                lineNumber: 84,
+                lineNumber: 85,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactModalDefault.default), {
@@ -47324,7 +47325,7 @@ const Gallery = ({ movieID })=>{
                         children: "close"
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
-                        lineNumber: 100,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -47332,13 +47333,13 @@ const Gallery = ({ movieID })=>{
                         className: "modal-image"
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
-                        lineNumber: 101,
+                        lineNumber: 102,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/gallery/gallery.jsx",
-                lineNumber: 99,
+                lineNumber: 100,
                 columnNumber: 7
             }, undefined)
         ]
@@ -48696,13 +48697,14 @@ const LoginView = ({ onLoggedIn })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
+    const apiLoginUrl = "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/login";
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
             Username: username,
             Password: password
         };
-        fetch("http://54.242.62.28:8080/login", {
+        fetch(apiLoginUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -48725,7 +48727,7 @@ const LoginView = ({ onLoggedIn })=>{
                 children: "Welcome to"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 44,
+                lineNumber: 47,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -48733,7 +48735,7 @@ const LoginView = ({ onLoggedIn })=>{
                 children: "myFlix"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 45,
+                lineNumber: 48,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
@@ -48751,12 +48753,12 @@ const LoginView = ({ onLoggedIn })=>{
                             minLength: "5"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 48,
+                            lineNumber: 51,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 47,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48770,12 +48772,12 @@ const LoginView = ({ onLoggedIn })=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 58,
+                            lineNumber: 61,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 57,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -48785,13 +48787,13 @@ const LoginView = ({ onLoggedIn })=>{
                         children: "Login"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 66,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 46,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -48800,18 +48802,18 @@ const LoginView = ({ onLoggedIn })=>{
                     children: "Don't have an account?"
                 }, void 0, false, {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 71,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 70,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 43,
+        lineNumber: 46,
         columnNumber: 5
     }, undefined);
 };
@@ -48849,6 +48851,7 @@ const SignupView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
+    const apiSignupUrl = "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users";
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
@@ -48857,7 +48860,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("http://54.242.62.28:8080/users", {
+        fetch(apiSignupUrl, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -48876,7 +48879,7 @@ const SignupView = ()=>{
                 children: "Welcome to"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 39,
+                lineNumber: 41,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -48884,7 +48887,7 @@ const SignupView = ()=>{
                 children: "myFlix"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 40,
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined),
             " ",
@@ -48903,12 +48906,12 @@ const SignupView = ()=>{
                             minLength: "5"
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 43,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 42,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, undefined),
                     " ",
@@ -48923,12 +48926,12 @@ const SignupView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 53,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 52,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48942,12 +48945,12 @@ const SignupView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 62,
+                            lineNumber: 64,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48961,7 +48964,7 @@ const SignupView = ()=>{
                                 children: "Birthday:"
                             }, void 0, false, {
                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                lineNumber: 71,
+                                lineNumber: 73,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48971,13 +48974,13 @@ const SignupView = ()=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                lineNumber: 72,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -48987,13 +48990,13 @@ const SignupView = ()=>{
                         children: "Signup"
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 79,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 41,
+                lineNumber: 43,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -49002,18 +49005,18 @@ const SignupView = ()=>{
                     children: "Already have an account?"
                 }, void 0, false, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 84,
+                    lineNumber: 86,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 83,
+                lineNumber: 85,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 38,
+        lineNumber: 40,
         columnNumber: 5
     }, undefined);
 };
@@ -49056,7 +49059,7 @@ const ProfileView = ({ user, onUserUpdate, movies, onDeregister })=>{
     const [birthday, setBirthday] = (0, _react.useState)("");
     const token = localStorage.getItem("token");
     let favoriteMoviesList = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
-    const apiUsersUrl = `http://54.242.62.28:8080/users/${user.Username}`;
+    const apiUsersUrl = `http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users/${user.Username}`;
     const deregisterUser = ()=>{
         fetch(apiUsersUrl, {
             method: "DELETE",

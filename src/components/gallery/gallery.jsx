@@ -11,7 +11,8 @@ export const Gallery = ({ movieID }) => {
 
   const fileInputRef = useRef(null);
 
-  const apiImagesUrl = "http://54.242.62.28:8080/images";
+  const apiImagesUrl =
+    "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/images";
   const bucketUrl = "https://silly-lil-bucket-guy.s3.amazonaws.com";
 
   useEffect(() => {
@@ -98,7 +99,7 @@ export const Gallery = ({ movieID }) => {
       </form>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <Button onClick={closeModal}>close</Button>
-        <img src={bigPicSrc} className="modal-image"/>
+        <img src={bigPicSrc} className="modal-image" />
       </Modal>
     </>
   );

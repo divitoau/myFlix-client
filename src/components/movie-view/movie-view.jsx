@@ -19,7 +19,7 @@ export const MovieView = ({
     user.FavoriteMovies.includes(m._id)
   );
 
-  const apiFavesUrl = `http://54.242.62.28:8080/users/${user.Username}/movies/${movie._id}`;
+  const apiFavesUrl = `http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users/${user.Username}/movies/${movie._id}`;
 
   const addFavorite = () => {
     fetch(apiFavesUrl, {

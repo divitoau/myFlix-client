@@ -3,12 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
-
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+
+  const apiSignupUrl =
+    "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/users";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +20,7 @@ export const SignupView = () => {
       Email: email,
       Birthday: birthday,
     };
-    fetch("http://54.242.62.28:8080/users", {
+    fetch(apiSignupUrl, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -68,7 +70,7 @@ export const SignupView = () => {
           />
         </Form.Group>
         <Form.Group className="mb-4" controlId="formBirthday">
-          <Form.Label style={{color: "gray"}}>Birthday:</Form.Label>
+          <Form.Label style={{ color: "gray" }}>Birthday:</Form.Label>
           <Form.Control
             type="date"
             value={birthday}

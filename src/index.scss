@@ -1,13 +1,17 @@
+@import "~bootstrap/scss/bootstrap.scss";
 
-
-@import '~bootstrap/scss/bootstrap.scss';
-
-h1, h2, h3, h4, p, label, input {
-    color: white
+h1,
+h2,
+h3,
+h4,
+p,
+label,
+input {
+  color: white;
 }
 
 .modal-image {
-    display: block;
-    margin: auto;
-    height: 80vh
+  display: block;
+  margin: auto;
+  height: 80vh;
 }

@@ -21,8 +21,11 @@ export const MainView = () => {
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [search, setSearch] = useState("");
 
+  const apiMoviesUrl =
+    "http://my-first-load-balancer-1768505441.us-east-1.elb.amazonaws.com/movies";
+
   useEffect(() => {
-    fetch("http://54.242.62.28:8080/movies", {
+    fetch(apiMoviesUrl, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
