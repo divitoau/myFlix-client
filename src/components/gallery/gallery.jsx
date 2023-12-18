@@ -87,7 +87,7 @@ export const Gallery = ({ movieID }) => {
         onSubmit={handleFormSubmit}
         encType="multipart/form-data"
       >
-        <label htmlFor="fileInput">Upload a new babe:</label>
+        <label htmlFor="fileInput">Upload a new photo:</label>
         <input
           type="file"
           id="fileInput"

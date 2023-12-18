@@ -47285,7 +47285,7 @@ const Gallery = ({ movieID })=>{
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                         htmlFor: "fileInput",
-                        children: "Upload a new babe:"
+                        children: "Upload a new photo:"
                     }, void 0, false, {
                         fileName: "src/components/gallery/gallery.jsx",
                         lineNumber: 90,
