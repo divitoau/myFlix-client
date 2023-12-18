@@ -8,4 +8,4 @@ React, Parcel, React-Bootstrap
 
 ## API used
 
-https://cool-movie-app-e45a3b27efd5.herokuapp.com
+http://localhost:8080

@@ -22,7 +22,7 @@ export const MainView = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
+    fetch("http://localhost:8080/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -88,7 +88,7 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movies/:movieId"
+            path="/movies/:movieID"
             element={
               <>
                 {!user ? (

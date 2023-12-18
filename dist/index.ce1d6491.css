@@ -13174,4 +13174,14 @@ textarea.form-control-lg {
   }
 }
 
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, p, label, input {
+  color: #fff;
+}
+
+.modal-image {
+  height: 80vh;
+  margin: auto;
+  display: block;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

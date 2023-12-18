@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { Gallery } from "../gallery/gallery";
 
 export const MovieView = ({
   movies,
@@ -11,24 +12,23 @@ export const MovieView = ({
   onAddFavorite,
   onRemoveFavorite,
 }) => {
-  const { movieId } = useParams();
-  const movie = movies.find((m) => m._id === movieId);
+  const { movieID } = useParams();
+  const movie = movies.find((m) => m._id === movieID);
   const token = localStorage.getItem("token");
   let favoriteMoviesList = movies.filter((m) =>
     user.FavoriteMovies.includes(m._id)
   );
 
+  const apiFavesUrl = `http://localhost:8080/users/${user.Username}/movies/${movie._id}`;
+
   const addFavorite = () => {
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(apiFavesUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Favorite movie list: ", data.FavoriteMovies);
@@ -40,16 +40,13 @@ export const MovieView = ({
   };
 
   const removeFavorite = () => {
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(apiFavesUrl, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Favorite movie list: ", data.FavoriteMovies);
@@ -79,7 +76,7 @@ export const MovieView = ({
         <div className="mb-3">
           <p>{movie.Description}</p>
         </div>
-        <Stack direction="horizontal">
+        <Stack direction="horizontal" className="mb-3">
           <Link to={`/`}>
             <Button variant="primary" className="back-button">
               Back
@@ -99,6 +96,7 @@ export const MovieView = ({
             </Button>
           )}
         </Stack>
+        <Gallery movieID={movieID}></Gallery>
       </Col>
       <Col md={4}>
         <img className="w-100" src={movie.ImagePath} alt="" />

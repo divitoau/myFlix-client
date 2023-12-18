@@ -17,17 +17,16 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
     user.FavoriteMovies.includes(m._id)
   );
 
+  const apiUsersUrl = `http://localhost:8080/users/${user.Username}`;
+
   const deregisterUser = () => {
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(apiUsersUrl, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         console.log("Response: ", response);
         onDeregister();
@@ -45,17 +44,14 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
       Email: email,
       Birthday: birthday,
     };
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(apiUsersUrl, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Update response: ", data);
