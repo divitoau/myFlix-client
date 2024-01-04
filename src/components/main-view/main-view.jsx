@@ -8,10 +8,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Row from "react-bootstrap/Row";
-import { Col } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
-
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -22,13 +18,15 @@ export const MainView = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
+    if (token) {
+      fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((response) => response.json())
+        .then((movies) => {
+          setMovies(movies);
+        });
+    }
   }, [token]);
 
   const searchMovies = (event) => {
@@ -42,7 +40,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <div className="mb-4" style={{ margin: "auto -12px auto" }}>
+      <div style={{ margin: "auto -12px auto" }}>
         <NavigationBar
           user={user}
           onLoggedOut={() => {
@@ -52,7 +50,7 @@ export const MainView = () => {
           }}
         />
       </div>
-      <Row className="justify-content-md-center">
+      <div>
         <Routes>
           <Route
             path="/signup"
@@ -61,9 +59,9 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={4}>
+                  <div>
                     <SignupView />
-                  </Col>
+                  </div>
                 )}
               </>
             }
@@ -75,14 +73,14 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={4}>
+                  <div>
                     <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
                       }}
                     />
-                  </Col>
+                  </div>
                 )}
               </>
             }
@@ -94,9 +92,9 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty :(</Col>
+                  <div>The list is empty :(</div>
                 ) : (
-                  <Col>
+                  <div>
                     <MovieView
                       movies={movies}
                       user={user}
@@ -107,7 +105,7 @@ export const MainView = () => {
                         setUser(user);
                       }}
                     />
-                  </Col>
+                  </div>
                 )}
               </>
             }
@@ -119,7 +117,7 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
-                  <Col>
+                  <div>
                     <ProfileView
                       movies={movies}
                       user={user}
@@ -132,7 +130,7 @@ export const MainView = () => {
                         localStorage.clear();
                       }}
                     />
-                  </Col>
+                  </div>
                 )}
               </>
             }
@@ -144,45 +142,60 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty :(</Col>
+                  <div>The list is empty :(</div>
                 ) : (
                   <div>
-                    <Row className="justify-content-md-center">
-                      {" "}
-                      <Col md={4}>
-                        <Form className="mb-5">
-                          <Form.Group className="mb-4" controlId="searchBar">
-                            <Form.Control
-                              type="text"
-                              placeholder="Search"
-                              value={search}
-                              onChange={(e) => setSearch(e.target.value)}
-                              onInput={searchMovies}
-                            />
-                          </Form.Group>{" "}
-                        </Form>
-                      </Col>
-                    </Row>
+                    <div>
+                      <form>
+                        <input
+                          style={{
+                            borderRadius: ".375rem",
+                            width: "100%",
+                            height: "38px",
+                            border: "white solid",
+                            marginTop: "10px",
+                            paddingLeft: "10px",
+                          }}
+                          type="text"
+                          placeholder="Search"
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          onInput={searchMovies}
+                        />
+                      </form>
+                    </div>
                     {search ? (
-                      <Row>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-around",
+                          flexWrap: "wrap",
+                        }}
+                      >
                         <>
                           {searchedMovies.map((movie) => (
-                            <Col className="mb-4 px-4" key={movie._id} md={3}>
+                            <div key={movie._id} style={{ width: "20em" }}>
                               <MovieCard movie={movie} />
-                            </Col>
+                            </div>
                           ))}
                         </>
-                      </Row>
+                      </div>
                     ) : (
-                      <Row>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-around",
+                          flexWrap: "wrap",
+                        }}
+                      >
                         <>
                           {movies.map((movie) => (
-                            <Col className="mb-4 px-4" key={movie._id} md={3}>
+                            <div key={movie._id} style={{ width: "20em" }}>
                               <MovieCard movie={movie} />
-                            </Col>
+                            </div>
                           ))}
                         </>
-                      </Row>
+                      </div>
                     )}
                   </div>
                 )}
@@ -190,7 +203,7 @@ export const MainView = () => {
             }
           />
         </Routes>
-      </Row>
+      </div>
     </BrowserRouter>
   );
 };

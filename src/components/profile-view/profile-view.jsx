@@ -1,8 +1,4 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Col } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
@@ -68,28 +64,27 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
   };
   return (
     <div>
-      <h1 className="mb-4">Hello {user.Username}!</h1>
-      <Row>
-        <Col>
+      <h1>Hello {user.Username}!</h1>
+      <div>
+        <div>
           <h2>Account Information</h2>
           <p>Email: {user.Email}</p>
           <p>
             Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
             {user.Birthday.slice(0, 4)}
-          </p>{" "}
+          </p>
           <p
             style={{ color: "red", cursor: "pointer" }}
             onClick={deregisterUser}
           >
-            {" "}
-            Remove account permanently{" "}
+            Remove account permanently
           </p>
-        </Col>{" "}
-        <Col>
+        </div>
+        <div>
           <h2>Update Information</h2>
-          <Form onSubmit={updateInfo}>
-            <Form.Group className="mb-4" controlId="formUsername">
-              <Form.Control
+          <form onSubmit={updateInfo}>
+            <div>
+              <input
                 type="text"
                 placeholder="Username"
                 value={username}
@@ -97,50 +92,49 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
                 required
                 minLength="5"
               />
-            </Form.Group>{" "}
-            <Form.Group className="mb-4" controlId="formEmail">
-              <Form.Control
+            </div>
+            <div>
+              <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </Form.Group>
-            <Form.Group className="mb-2" controlId="formPassword">
-              <Form.Control
+            </div>
+            <div>
+              <input
                 type="password"
                 placeholder="Pasword"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </Form.Group>
-            <Form.Group className="mb-4" controlId="formBirthday">
-              <Form.Label style={{ color: "gray" }}>Birthday:</Form.Label>
-              <Form.Control
+            </div>
+            <div>
+              <label htmlFor="birthday_input" style={{ color: "gray" }}>
+                Birthday:
+              </label>
+              <input
+                id="birthday_input"
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
                 required
               />
-            </Form.Group>
-            <Button className="mb-4" variant="primary" type="submit">
-              Update
-            </Button>
-          </Form>
-        </Col>
-      </Row>
+            </div>
+            <button type="submit">Update</button>
+          </form>
+        </div>
+      </div>
       <h2>Favorites</h2>
-      <Row>
-        <>
-          {favoriteMoviesList.map((movie) => (
-            <Col className="mb-4" key={movie._id} md={3}>
-              <MovieCard movie={movie} />
-            </Col>
-          ))}
-        </>
-      </Row>
+      <div>
+        {favoriteMoviesList.map((movie) => (
+          <div key={movie._id} md={3}>
+            <MovieCard movie={movie} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

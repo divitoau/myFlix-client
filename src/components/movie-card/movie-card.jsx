@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
@@ -9,8 +8,7 @@ export const MovieCard = ({ movie }) => {
   return (
     <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
       {isShown ? (
-        <Card
-          className="h-100"
+        <div
           style={{
             cursor: "pointer",
             transition: "transform .2s",
@@ -20,12 +18,15 @@ export const MovieCard = ({ movie }) => {
           }}
           onMouseLeave={() => setIsShown(false)}
         >
-          <Card.Img
+          <img
             variant="top"
             src={movie.ImagePath}
-            style={{ aspectRatio: "7/10" }}
+            style={{
+              aspectRatio: "7/10",
+              width: "100%",
+            }}
           />
-          <Card.Body
+          <div
             style={{
               position: "absolute",
               top: "100%",
@@ -33,15 +34,12 @@ export const MovieCard = ({ movie }) => {
               width: "100%",
             }}
           >
-            <Card.Title style={{ color: "#eee" }}>{movie.Title}</Card.Title>
-            <Card.Text style={{ color: "#eee" }}>
-              Genre: {movie.Genre.Name}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+            <h3 style={{ color: "#eee" }}>{movie.Title}</h3>
+            <h4 style={{ color: "#eee" }}>Genre: {movie.Genre.Name}</h4>
+          </div>
+        </div>
       ) : (
-        <Card
-          className="h-100"
+        <div
           style={{
             cursor: "pointer",
             zIndex: "2",
@@ -50,12 +48,15 @@ export const MovieCard = ({ movie }) => {
           }}
           onMouseEnter={() => setIsShown(true)}
         >
-          <Card.Img
+          <img
             variant="top"
             src={movie.ImagePath}
-            style={{ aspectRatio: "7/10" }}
+            style={{
+              aspectRatio: "7/10",
+              width: "100%",
+            }}
           />
-        </Card>
+        </div>
       )}
     </Link>
   );
