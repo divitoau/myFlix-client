@@ -4,7 +4,7 @@ myFlix is a web application built as a class project. It is a single page applic
 
 ## Dependencies
 
-React, Parcel, React-Bootstrap
+React, Parcel
 
 ## API used
 
