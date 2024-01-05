@@ -40,16 +40,14 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <div style={{ margin: "auto -12px auto" }}>
-        <NavigationBar
-          user={user}
-          onLoggedOut={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-        />
-      </div>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <div>
         <Routes>
           <Route
@@ -148,14 +146,7 @@ export const MainView = () => {
                     <div>
                       <form>
                         <input
-                          style={{
-                            borderRadius: ".375rem",
-                            width: "100%",
-                            height: "38px",
-                            border: "white solid",
-                            marginTop: "10px",
-                            paddingLeft: "10px",
-                          }}
+                          className="search-bar"
                           type="text"
                           placeholder="Search"
                           value={search}
@@ -165,32 +156,20 @@ export const MainView = () => {
                       </form>
                     </div>
                     {search ? (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-around",
-                          flexWrap: "wrap",
-                        }}
-                      >
+                      <div className="card-container">
                         <>
                           {searchedMovies.map((movie) => (
-                            <div key={movie._id} style={{ width: "20em" }}>
+                            <div key={movie._id} className="movie-card">
                               <MovieCard movie={movie} />
                             </div>
                           ))}
                         </>
                       </div>
                     ) : (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-around",
-                          flexWrap: "wrap",
-                        }}
-                      >
+                      <div className="card-container">
                         <>
                           {movies.map((movie) => (
-                            <div key={movie._id} style={{ width: "20em" }}>
+                            <div key={movie._id} className="movie-card">
                               <MovieCard movie={movie} />
                             </div>
                           ))}

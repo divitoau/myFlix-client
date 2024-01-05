@@ -6,12 +6,7 @@ import "./index.scss";
 
 const MyFlixApplication = () => {
   return (
-    <div
-      style={{
-        backgroundColor: "#161616",
-        paddingBottom: "140px",
-      }}
-    >
+    <div>
       <MainView />
     </div>
   );

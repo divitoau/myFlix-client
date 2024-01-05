@@ -73,12 +73,9 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
             Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
             {user.Birthday.slice(0, 4)}
           </p>
-          <p
-            style={{ color: "red", cursor: "pointer" }}
-            onClick={deregisterUser}
-          >
+          <button className="remove-profile-button" onClick={deregisterUser}>
             Remove account permanently
-          </p>
+          </button>
         </div>
         <div>
           <h2>Update Information</h2>
@@ -112,9 +109,7 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
               />
             </div>
             <div>
-              <label htmlFor="birthday_input" style={{ color: "gray" }}>
-                Birthday:
-              </label>
+              <label htmlFor="birthday_input">Birthday:</label>
               <input
                 id="birthday_input"
                 type="date"
@@ -128,12 +123,14 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
         </div>
       </div>
       <h2>Favorites</h2>
-      <div>
-        {favoriteMoviesList.map((movie) => (
-          <div key={movie._id} md={3}>
-            <MovieCard movie={movie} />
-          </div>
-        ))}
+      <div className="card-container">
+        <>
+          {favoriteMoviesList.map((movie) => (
+            <div key={movie._id} className="movie-card">
+              <MovieCard movie={movie} />
+            </div>
+          ))}
+        </>
       </div>
     </div>
   );

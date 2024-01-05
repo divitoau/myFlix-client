@@ -1,3 +1,46 @@
+h1, h2, h3, h4, p, a, label {
+  color: #fff;
+}
 
+body {
+  background-color: #161616;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.search-bar {
+  border: solid #fff;
+  border-radius: .375rem;
+  width: 100%;
+  height: 38px;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.card-container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  display: flex;
+}
+
+.movie-card {
+  width: 20em;
+}
+
+.card-poster {
+  aspect-ratio: 7 / 10;
+  width: 100%;
+}
+
+.big-poster {
+  width: 400px;
+}
+
+.remove-profile-button {
+  color: red;
+}
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

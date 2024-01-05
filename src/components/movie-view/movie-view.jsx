@@ -83,7 +83,7 @@ export const MovieView = ({
         )}
       </div>
       <div>
-        <img src={movie.ImagePath} alt="movie poster" style={{ width: "400px" }} />
+        <img src={movie.ImagePath} alt="movie poster" className="big-poster" />
       </div>
     </>
   );

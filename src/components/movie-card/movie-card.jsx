@@ -18,14 +18,7 @@ export const MovieCard = ({ movie }) => {
           }}
           onMouseLeave={() => setIsShown(false)}
         >
-          <img
-            variant="top"
-            src={movie.ImagePath}
-            style={{
-              aspectRatio: "7/10",
-              width: "100%",
-            }}
-          />
+          <img className="card-poster" variant="top" src={movie.ImagePath} />
           <div
             style={{
               position: "absolute",
@@ -34,8 +27,8 @@ export const MovieCard = ({ movie }) => {
               width: "100%",
             }}
           >
-            <h3 style={{ color: "#eee" }}>{movie.Title}</h3>
-            <h4 style={{ color: "#eee" }}>Genre: {movie.Genre.Name}</h4>
+            <h3>{movie.Title}</h3>
+            <h4>Genre: {movie.Genre.Name}</h4>
           </div>
         </div>
       ) : (
@@ -48,14 +41,7 @@ export const MovieCard = ({ movie }) => {
           }}
           onMouseEnter={() => setIsShown(true)}
         >
-          <img
-            variant="top"
-            src={movie.ImagePath}
-            style={{
-              aspectRatio: "7/10",
-              width: "100%",
-            }}
-          />
+          <img className="card-poster" variant="top" src={movie.ImagePath} />
         </div>
       )}
     </Link>

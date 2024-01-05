@@ -66,9 +66,7 @@ export const SignupView = () => {
           />
         </div>
         <div>
-          <label htmlFor="birthday_input" style={{ color: "gray" }}>
-            Birthday:
-          </label>
+          <label htmlFor="birthday_input">Birthday:</label>
           <input
             id="birthday_input"
             type="date"
