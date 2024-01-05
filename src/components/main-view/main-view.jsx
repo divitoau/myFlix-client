@@ -174,6 +174,14 @@ export const MainView = () => {
                             </div>
                           ))}
                         </>
+                        <div className="test-poster">
+                          <div className="test-overlay">
+                            <div className="overlay-textbox">
+                              <h2>test title</h2>
+                              <h3>test other stuff</h3>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
