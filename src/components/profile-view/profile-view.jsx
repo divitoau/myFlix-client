@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
+export const ProfileView = ({
+  user,
+  onUserUpdate,
+  movies,
+  onDeregister,
+  onAddFavorite,
+  onRemoveFavorite,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -127,7 +134,16 @@ export const ProfileView = ({ user, onUserUpdate, movies, onDeregister }) => {
         <>
           {favoriteMoviesList.map((movie) => (
             <div key={movie._id} className="movie-card">
-              <MovieCard movie={movie} />
+              <MovieCard
+                movie={movie}
+                user={user}
+                onAddFavorite={(user) => {
+                  onAddFavorite(user);
+                }}
+                onRemoveFavorite={(user) => {
+                  onRemoveFavorite(user);
+                }}
+              />
             </div>
           ))}
         </>

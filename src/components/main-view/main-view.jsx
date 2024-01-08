@@ -48,149 +48,153 @@ export const MainView = () => {
           localStorage.clear();
         }}
       />
-      <div>
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <div>
-                    <SignupView />
-                  </div>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <div>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </div>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <div>The list is empty :(</div>
-                ) : (
-                  <div>
-                    <MovieView
-                      movies={movies}
-                      user={user}
-                      onAddFavorite={(user) => {
-                        setUser(user);
-                      }}
-                      onRemoveFavorite={(user) => {
-                        setUser(user);
-                      }}
-                    />
-                  </div>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <div>
-                    <ProfileView
-                      movies={movies}
-                      user={user}
-                      onUserUpdate={(user) => {
-                        setUser(user);
-                      }}
-                      onDeregister={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
-                      }}
-                    />
-                  </div>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <div>The list is empty :(</div>
-                ) : (
-                  <div>
-                    <div>
-                      <form>
-                        <input
-                          className="search-bar"
-                          type="text"
-                          placeholder="Search"
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          onInput={searchMovies}
-                        />
-                      </form>
-                    </div>
+      <Routes>
+        <Route
+          path="/signup"
+          element={
+            <>
+              {user ? (
+                <Navigate to="/" />
+              ) : (
+                <div>
+                  <SignupView />
+                </div>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              {user ? (
+                <Navigate to="/" />
+              ) : (
+                <div>
+                  <LoginView
+                    onLoggedIn={(user, token) => {
+                      setUser(user);
+                      setToken(token);
+                    }}
+                  />
+                </div>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/:movieId"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <p>The list is empty :(</p>
+              ) : (
+                <MovieView
+                  movies={movies}
+                  user={user}
+                  onAddFavorite={(user) => {
+                    setUser(user);
+                  }}
+                  onRemoveFavorite={(user) => {
+                    setUser(user);
+                  }}
+                />
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <ProfileView
+                  movies={movies}
+                  user={user}
+                  onUserUpdate={(user) => {
+                    setUser(user);
+                  }}
+                  onDeregister={() => {
+                    setUser(null);
+                    setToken(null);
+                    localStorage.clear();
+                  }}
+                  onAddFavorite={(user) => {
+                    setUser(user);
+                  }}
+                  onRemoveFavorite={(user) => {
+                    setUser(user);
+                  }}
+                />
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <p>The list is empty :(</p>
+              ) : (
+                <div className="main-view">
+                  <input
+                    className="search-bar"
+                    type="text"
+                    placeholder="Search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    onInput={searchMovies}
+                  />
+                  <div className="card-container">
                     {search ? (
-                      <div className="card-container">
-                        <>
-                          {searchedMovies.map((movie) => (
-                            <div key={movie._id} className="movie-card">
-                              <MovieCard movie={movie} />
-                            </div>
-                          ))}
-                        </>
-                      </div>
-                    ) : (
-                      <div className="card-container">
-                        <>
-                          {movies.map((movie) => (
-                            <div key={movie._id} className="movie-card">
-                              <MovieCard movie={movie} />
-                            </div>
-                          ))}
-                        </>
-                        <div className="test-poster">
-                          <div className="test-overlay">
-                            <div className="overlay-textbox">
-                              <h2>test title</h2>
-                              <h3>test other stuff</h3>
-                            </div>
+                      <>
+                        {searchedMovies.map((movie) => (
+                          <div key={movie._id} className="movie-card">
+                            <MovieCard
+                              movie={movie}
+                              user={user}
+                              onAddFavorite={(user) => {
+                                setUser(user);
+                              }}
+                              onRemoveFavorite={(user) => {
+                                setUser(user);
+                              }}
+                            />
                           </div>
-                        </div>
-                      </div>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        {movies.map((movie) => (
+                          <div key={movie._id} className="movie-card">
+                            <MovieCard
+                              movie={movie}
+                              user={user}
+                              onAddFavorite={(user) => {
+                                setUser(user);
+                              }}
+                              onRemoveFavorite={(user) => {
+                                setUser(user);
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </>
                     )}
                   </div>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </div>
+                </div>
+              )}
+            </>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -48,20 +48,22 @@ button {
   color: red;
 }
 
-.test-poster {
+.movie-card {
   width: 20em;
-  background: red;
+  background: #161616;
   cursor: pointer;
   position: relative;
+  border: none;
 }
 
-.test-poster:hover {
+.movie-card:hover {
   transform: scale(1.1);
   z-index: 3;
 }
 
-.test-overlay {
+.card-overlay {
   position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -73,20 +75,39 @@ button {
   opacity: 0;
 }
 
-.test-overlay:hover {
+.card-overlay:hover {
   opacity: 1;
 }
 
-.test-poster,
-.test-poster:hover,
-.test-overlay,
-.test-overlay:hover {
+.movie-card,
+.movie-card:hover,
+.card-overlay,
+.card-overlay:hover {
   transition: transform 0.2s, opacity 0.2s;
 }
 
 .overlay-textbox {
-    position: absolute;
-    bottom: 0;
-    height: 25%;
-    padding-left: 20px;
+  position: absolute;
+  bottom: 0;
+  height: 25%;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.overlay-text {
+  justify-self: start;
+}
+
+.favorite-button {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  border: 0;
+  background-color: #0000;
+  justify-self: center;
+  align-self: center;
+  width: 40px;
 }
