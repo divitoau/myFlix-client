@@ -17,9 +17,11 @@ export const MainView = () => {
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [search, setSearch] = useState("");
 
+  const fetchUrl = "https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies";
+
   useEffect(() => {
     if (token) {
-      fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/movies", {
+      fetch(fetchUrl, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => response.json())

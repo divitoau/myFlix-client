@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <div>
+    <div className="navigation">
       <Link to="/">myFlix</Link>
       <div>
         {!user ? (
