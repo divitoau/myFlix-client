@@ -6,8 +6,7 @@ export const ProfileView = ({
   onUserUpdate,
   movies,
   onDeregister,
-  onAddFavorite,
-  onRemoveFavorite,
+  onChangeFavorite,
 }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,27 +14,25 @@ export const ProfileView = ({
   const [birthday, setBirthday] = useState("");
 
   const token = localStorage.getItem("token");
+  const fetchUrl = `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`;
 
-  let favoriteMoviesList = movies.filter((m) =>
+  const favoriteMoviesList = movies.filter((m) =>
     user.FavoriteMovies.includes(m._id)
   );
 
   const deregisterUser = () => {
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(fetchUrl, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         console.log("Response: ", response);
         onDeregister();
       })
-      .catch((e) => {
+      .catch(() => {
         alert("Something went wrong");
       });
   };
@@ -48,24 +45,22 @@ export const ProfileView = ({
       Email: email,
       Birthday: birthday,
     };
-    fetch(
-      `https://cool-movie-app-e45a3b27efd5.herokuapp.com/users/${user.Username}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+
+    fetch(fetchUrl, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Update response: ", data);
         localStorage.setItem("user", JSON.stringify(data));
         onUserUpdate(data);
       })
-      .catch((e) => {
+      .catch(() => {
         alert("Something went wrong");
       });
   };
@@ -73,61 +68,59 @@ export const ProfileView = ({
     <div>
       <h1>Hello {user.Username}!</h1>
       <div>
-        <div>
-          <h2>Account Information</h2>
-          <p>Email: {user.Email}</p>
-          <p>
-            Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
-            {user.Birthday.slice(0, 4)}
-          </p>
-          <button className="remove-profile-button" onClick={deregisterUser}>
-            Remove account permanently
-          </button>
-        </div>
-        <div>
-          <h2>Update Information</h2>
-          <form onSubmit={updateInfo}>
-            <div>
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                minLength="5"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="Pasword"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="birthday_input">Birthday:</label>
-              <input
-                id="birthday_input"
-                type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Update</button>
-          </form>
-        </div>
+        <h2>Account Information</h2>
+        <p>Email: {user.Email}</p>
+        <p>
+          Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
+          {user.Birthday.slice(0, 4)}
+        </p>
+        <button className="remove-profile-button" onClick={deregisterUser}>
+          Remove account permanently
+        </button>
+      </div>
+      <div>
+        <h2>Update Information</h2>
+        <form onSubmit={updateInfo}>
+          <div>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              minLength="5"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Pasword"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="birthday_input">Birthday:</label>
+            <input
+              id="birthday_input"
+              type="date"
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Update</button>
+        </form>
       </div>
       <h2>Favorites</h2>
       <div className="card-container">
@@ -137,11 +130,8 @@ export const ProfileView = ({
               <MovieCard
                 movie={movie}
                 user={user}
-                onAddFavorite={(user) => {
-                  onAddFavorite(user);
-                }}
-                onRemoveFavorite={(user) => {
-                  onRemoveFavorite(user);
+                onChangeFavorite={(user) => {
+                  onChangeFavorite(user);
                 }}
               />
             </div>

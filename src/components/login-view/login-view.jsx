@@ -1,11 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const fetchUrl = "https://cool-movie-app-e45a3b27efd5.herokuapp.com/login";
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -14,7 +15,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password,
     };
 
-    fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/login", {
+    fetch(fetchUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +33,7 @@ export const LoginView = ({ onLoggedIn }) => {
           alert("No such user");
         }
       })
-      .catch((e) => {
+      .catch(() => {
         alert("Something went wrong");
       });
   };
@@ -40,7 +41,7 @@ export const LoginView = ({ onLoggedIn }) => {
   return (
     <div>
       <p>Welcome to</p>
-      <h1 >myFlix</h1>
+      <h1>myFlix</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -61,9 +62,7 @@ export const LoginView = ({ onLoggedIn }) => {
             required
           />
         </div>
-        <button type="submit">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
       <Link to={`/signup`}>
         <p>Don't have an account?</p>

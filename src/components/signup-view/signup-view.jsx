@@ -8,6 +8,8 @@ export const SignupView = () => {
   const [birthday, setBirthday] = useState("");
   const navigate = useNavigate();
 
+  const fetchUrl = "https://cool-movie-app-e45a3b27efd5.herokuapp.com/users";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
@@ -16,26 +18,31 @@ export const SignupView = () => {
       Email: email,
       Birthday: birthday,
     };
-    fetch("https://cool-movie-app-e45a3b27efd5.herokuapp.com/users", {
+
+    fetch(fetchUrl, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        navigate("/login");
-        alert("Signup successful");
-      } else {
-        alert("Signup failed");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          navigate("/login");
+          alert("Signup successful");
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch(() => {
+        alert("Something went wrong");
+      });
   };
 
   return (
     <div>
       <p>Welcome to</p>
-      <h1 className="mb-4">myFlix</h1>{" "}
+      <h1>myFlix</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -59,7 +66,7 @@ export const SignupView = () => {
         <div>
           <input
             type="password"
-            placeholder="Pasword"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

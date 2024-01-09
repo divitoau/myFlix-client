@@ -11,8 +11,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [user, setUser] = useState(storedUser || null);
+  const [token, setToken] = useState(storedToken || null);
   const [movies, setMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [search, setSearch] = useState("");
@@ -25,7 +25,8 @@ export const MainView = () => {
         .then((response) => response.json())
         .then((movies) => {
           setMovies(movies);
-        });
+        })
+        .catch((error) => console.error("Error fetching movies:", error));
     }
   }, [token]);
 
@@ -94,12 +95,7 @@ export const MainView = () => {
                 <MovieView
                   movies={movies}
                   user={user}
-                  onAddFavorite={(user) => {
-                    setUser(user);
-                  }}
-                  onRemoveFavorite={(user) => {
-                    setUser(user);
-                  }}
+                  onChangeFavorite={(updatedUser) => setUser(updatedUser)}
                 />
               )}
             </>
@@ -115,20 +111,13 @@ export const MainView = () => {
                 <ProfileView
                   movies={movies}
                   user={user}
-                  onUserUpdate={(user) => {
-                    setUser(user);
-                  }}
+                  onUserUpdate={(updatedUser) => setUser(updatedUser)}
                   onDeregister={() => {
                     setUser(null);
                     setToken(null);
                     localStorage.clear();
                   }}
-                  onAddFavorite={(user) => {
-                    setUser(user);
-                  }}
-                  onRemoveFavorite={(user) => {
-                    setUser(user);
-                  }}
+                  onChangeFavorite={(updatedUser) => setUser(updatedUser)}
                 />
               )}
             </>
@@ -160,12 +149,9 @@ export const MainView = () => {
                             <MovieCard
                               movie={movie}
                               user={user}
-                              onAddFavorite={(user) => {
-                                setUser(user);
-                              }}
-                              onRemoveFavorite={(user) => {
-                                setUser(user);
-                              }}
+                              onChangeFavorite={(updatedUser) =>
+                                setUser(updatedUser)
+                              }
                             />
                           </div>
                         ))}
@@ -177,12 +163,9 @@ export const MainView = () => {
                             <MovieCard
                               movie={movie}
                               user={user}
-                              onAddFavorite={(user) => {
-                                setUser(user);
-                              }}
-                              onRemoveFavorite={(user) => {
-                                setUser(user);
-                              }}
+                              onChangeFavorite={(updatedUser) =>
+                                setUser(updatedUser)
+                              }
                             />
                           </div>
                         ))}
