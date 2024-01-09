@@ -93,6 +93,5 @@ MovieCard.propTypes = {
     FavoriteMovies: PropTypes.arrayOf(PropTypes.string),
     Username: PropTypes.string,
   }).isRequired,
-  onAddFavorite: PropTypes.func.isRequired,
-  onRemoveFavorite: PropTypes.func.isRequired,
+  onChangeFavorite: PropTypes.func.isRequired,
 };

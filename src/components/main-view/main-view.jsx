@@ -32,14 +32,12 @@ export const MainView = () => {
     }
   }, [token]);
 
-  const searchMovies = (event) => {
-    event.preventDefault();
-    setSearchedMovies(
-      movies.filter((movie) =>
-        movie.Title.toLowerCase().includes(search.toLowerCase())
-      )
+  useEffect(() => {
+    const filteredMovies = movies.filter((movie) =>
+      movie.Title.toLowerCase().includes(search.toLowerCase())
     );
-  };
+    setSearchedMovies(filteredMovies);
+  }, [movies, search]);
 
   return (
     <BrowserRouter>
@@ -140,8 +138,9 @@ export const MainView = () => {
                     type="text"
                     placeholder="Search"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onInput={searchMovies}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
                   />
                   <div className="card-container">
                     {search ? (
@@ -158,7 +157,7 @@ export const MainView = () => {
                           </div>
                         ))}
                       </>
-                    ) : (
+                    ) : ( 
                       <>
                         {movies.map((movie) => (
                           <div key={movie._id} className="movie-card">
