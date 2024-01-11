@@ -5,6 +5,7 @@ h1, h2, h3, h4, p, a, label {
 body {
   background-color: #161616;
   margin: 0;
+  padding-bottom: 43px;
 }
 
 button {
@@ -15,35 +16,59 @@ button {
   color: #fff;
   z-index: 20;
   box-sizing: border-box;
-  background-color: #161616;
+  background-color: #242424;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
-  padding: 10px;
+  height: 45px;
+  padding: 0 25px;
+  display: grid;
   position: fixed;
+  top: 0;
 }
 
 .navigation a {
   color: #fff;
-  margin-right: 10px;
+  box-sizing: border-box;
   text-decoration: none;
-  transition: color .2s;
+  transition: color .1s;
 }
 
 .navigation a:hover {
   color: #dcc;
-  transition: color .2s;
+}
+
+.navigation .nav-logo {
+  align-self: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navigation .nav-link-container {
+  place-self: center end;
+}
+
+.navigation .nav-link-container a {
+  margin-left: 10px;
+}
+
+.content-box {
+  margin-top: 73px;
 }
 
 .search-bar {
   border: solid #fff;
   border-radius: .375rem;
+  width: 250px;
   height: 30px;
-  margin-top: 66px;
+  margin: 0 auto 30px;
   padding-left: 10px;
+  display: block;
 }
 
 .card-container {
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 15px;
   display: flex;
 }
 
@@ -84,11 +109,11 @@ button {
   top: 0;
 }
 
-.movie-card:hover .card-overlay {
+.movie-card .card-overlay:hover {
   opacity: 1;
 }
 
-.movie-card .overlay-textbox {
+.movie-card .card-overlay .overlay-textbox {
   box-sizing: border-box;
   grid-template-columns: 5fr 1fr;
   width: 100%;
@@ -99,17 +124,27 @@ button {
   bottom: 0;
 }
 
-.movie-card .overlay-text {
+.movie-card .card-overlay .overlay-text {
   justify-self: start;
 }
 
-.movie-card .favorite-button {
+.movie-card .card-overlay .favorite-button {
   background-color: #0000;
   border: 0;
   place-self: center;
   width: 40px;
   height: 32px;
   padding: 0;
+}
+
+.movie-card .favorite-button-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform .1s;
+}
+
+.movie-card .favorite-button-icon:hover {
+  transform: scale(1.1);
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
