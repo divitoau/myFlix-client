@@ -27,8 +27,8 @@ export const MovieView = ({ movies, user, onChangeFavorite }) => {
   };
 
   return (
-    <>
-      <div>
+    <div className="movie-view">
+      <div className="info-box">
         <div>
           <div>
             <h2>{movie.Title}</h2>
@@ -53,6 +53,6 @@ export const MovieView = ({ movies, user, onChangeFavorite }) => {
       <div>
         <img src={movie.ImagePath} alt="movie poster" className="big-poster" />
       </div>
-    </>
+    </div>
   );
 };

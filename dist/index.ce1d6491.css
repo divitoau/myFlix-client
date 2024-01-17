@@ -1,5 +1,9 @@
+html * {
+  font-family: Arial !important;
+}
+
 h1, h2, h3, h4, p, a, label {
-  color: #fff;
+  color: #dedede;
 }
 
 body {
@@ -9,17 +13,52 @@ body {
 }
 
 button {
+  box-sizing: border-box;
+  color: #fff;
   cursor: pointer;
+  text-align: center;
+  text-transform: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  background: #a80a0a;
+  border: 1px solid #a80a0a;
+  border-radius: 6px;
+  outline: 0;
+  margin: 0 10px 10px 0;
+  padding: 12px 14px;
+  box-shadow: 1px 2px 4px #0000001a;
+}
+
+button:hover {
+  background-color: initial;
+  color: #a80a0a;
+  background-position: 0 0;
+}
+
+button:active {
+  background-color: initial;
+  color: #a80a0a;
+  opacity: .5;
+  background-position: 0 0;
+}
+
+.login-view p, .login-view h1, .login-view a, .signup-view p, .signup-view h1, .signup-view a {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  display: block;
 }
 
 .navigation {
-  color: #fff;
+  color: #dedede;
   z-index: 20;
   box-sizing: border-box;
   background-color: #242424;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  height: 45px;
+  height: 60px;
   padding: 0 25px;
   display: grid;
   position: fixed;
@@ -27,20 +66,21 @@ button {
 }
 
 .navigation a {
-  color: #fff;
+  color: #dedede;
   box-sizing: border-box;
   text-decoration: none;
   transition: color .1s;
 }
 
 .navigation a:hover {
-  color: #dcc;
+  color: #cbb;
 }
 
 .navigation .nav-logo {
   align-self: center;
   width: -moz-fit-content;
   width: fit-content;
+  font-size: xx-large;
 }
 
 .navigation .nav-link-container {
@@ -48,18 +88,54 @@ button {
 }
 
 .navigation .nav-link-container a {
-  margin-left: 10px;
+  margin-left: 20px;
+}
+
+form {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  display: flex;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+form input {
+  color: #dedede;
+  background-color: #161616;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  width: 227px;
+  padding: 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+form input:focus {
+  border-color: #a80a0a;
+  box-shadow: 0 0 0 3px #ff00004d;
+}
+
+form input::placeholder {
+  color: #cbb;
 }
 
 .content-box {
   margin-top: 73px;
+  padding: 0 5%;
 }
 
 .search-bar {
-  border: solid #fff;
-  border-radius: .375rem;
+  border: solid #dedede;
+  border-radius: 6px;
   width: 250px;
-  height: 30px;
+  height: 20px;
   margin: 0 auto 30px;
   padding-left: 10px;
   display: block;
@@ -67,23 +143,57 @@ button {
 
 .card-container {
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 15px;
+  justify-content: center;
+  gap: 25px;
   display: flex;
 }
 
 .big-poster {
-  width: 400px;
+  width: 500px;
 }
 
-.remove-profile-button {
-  color: red;
+.profile-view .account-info {
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 5%;
+  display: flex;
+}
+
+.profile-view .remove-profile-button {
+  margin-top: 186px;
+}
+
+.profile-view form {
+  align-items: start;
+}
+
+.info-box {
+  background-color: #242424;
+  border: 10px double #a80a0a;
+  border-radius: 6px;
+  width: 308px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+.movie-view {
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 5%;
+  margin-top: 130px;
+  display: flex;
+}
+
+.movie-view .info-box {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .movie-card {
   cursor: pointer;
   background: #161616;
   border: none;
+  border-radius: 6px;
   width: 20em;
   transition: transform .2s, opacity .2s;
   position: relative;
@@ -96,6 +206,7 @@ button {
 
 .movie-card .card-poster {
   aspect-ratio: 7 / 10;
+  border-radius: 6px;
   width: 100%;
 }
 

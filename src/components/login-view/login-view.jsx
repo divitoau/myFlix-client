@@ -39,7 +39,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <div>
+    <div className="login-view">
       <p>Welcome to</p>
       <h1>myFlix</h1>
       <form onSubmit={handleSubmit}>
@@ -64,9 +64,7 @@ export const LoginView = ({ onLoggedIn }) => {
         </div>
         <button type="submit">Login</button>
       </form>
-      <Link to={`/signup`}>
-        <p>Don't have an account?</p>
-      </Link>
+      <Link to={`/signup`}>Don't have an account?</Link>
     </div>
   );
 };

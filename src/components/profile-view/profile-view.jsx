@@ -65,62 +65,65 @@ export const ProfileView = ({
       });
   };
   return (
-    <div>
+    <div className="profile-view">
       <h1>Hello {user.Username}!</h1>
-      <div>
-        <h2>Account Information</h2>
-        <p>Email: {user.Email}</p>
-        <p>
-          Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
-          {user.Birthday.slice(0, 4)}
-        </p>
-        <button className="remove-profile-button" onClick={deregisterUser}>
-          Remove account permanently
-        </button>
-      </div>
-      <div>
-        <h2>Update Information</h2>
-        <form onSubmit={updateInfo}>
-          <div>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              minLength="5"
-            />
-          </div>
-          <div>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Pasword"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="birthday_input">Birthday:</label>
-            <input
-              id="birthday_input"
-              type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Update</button>
-        </form>
+
+      <div className="account-info">
+        <div className="info-box">
+          <h2>Account Information</h2>
+          <p>Email: {user.Email}</p>
+          <p>
+            Birthday: {user.Birthday.slice(5, 7)}/{user.Birthday.slice(8, 10)}/
+            {user.Birthday.slice(0, 4)}
+          </p>
+          <button className="remove-profile-button" onClick={deregisterUser}>
+            Remove account permanently
+          </button>
+        </div>
+        <div className="info-box">
+          <h2>Update Information</h2>
+          <form onSubmit={updateInfo}>
+            <div>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minLength="5"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="birthday_input">Birthday:</label>
+              <input
+                id="birthday_input"
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit">Update</button>
+          </form>
+        </div>
       </div>
       <h2>Favorites</h2>
       <div className="card-container">

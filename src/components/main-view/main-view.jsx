@@ -134,15 +134,17 @@ export const MainView = () => {
                   <p>The list is empty :(</p>
                 ) : (
                   <div className="main-view">
-                    <input
-                      className="search-bar"
-                      type="text"
-                      placeholder="Search"
-                      value={search}
-                      onChange={(e) => {
-                        setSearch(e.target.value);
-                      }}
-                    />
+                    <form>
+                      <input
+                        className="search-bar"
+                        type="text"
+                        placeholder="Search"
+                        value={search}
+                        onChange={(e) => {
+                          setSearch(e.target.value);
+                        }}
+                      />
+                    </form>
                     <div className="card-container">
                       {search ? (
                         <>

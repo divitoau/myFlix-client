@@ -40,7 +40,7 @@ export const SignupView = () => {
   };
 
   return (
-    <div>
+    <div className="signup-view">
       <p>Welcome to</p>
       <h1>myFlix</h1>
       <form onSubmit={handleSubmit}>
@@ -73,7 +73,7 @@ export const SignupView = () => {
           />
         </div>
         <div>
-          <label htmlFor="birthday_input">Birthday:</label>
+          <label htmlFor="birthday_input">Birthday: </label>
           <input
             id="birthday_input"
             type="date"
@@ -85,7 +85,7 @@ export const SignupView = () => {
         <button type="submit">Signup</button>
       </form>
       <Link to={`/login`}>
-        <p>Already have an account?</p>
+        Already have an account?
       </Link>
     </div>
   );
