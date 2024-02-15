@@ -104,7 +104,7 @@ form div {
 
 form label {
   margin-bottom: 10px;
-  display: inline-block;
+  display: block;
 }
 
 form input {

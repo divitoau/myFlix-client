@@ -73,7 +73,7 @@ export const SignupView = () => {
           />
         </div>
         <div>
-          <label htmlFor="birthday_input">Birthday: </label>
+          <label htmlFor="birthday_input">Birthday:</label>
           <input
             id="birthday_input"
             type="date"
@@ -84,9 +84,7 @@ export const SignupView = () => {
         </div>
         <button type="submit">Signup</button>
       </form>
-      <Link to={`/login`}>
-        Already have an account?
-      </Link>
+      <Link to={`/login`}>Already have an account?</Link>
     </div>
   );
 };
